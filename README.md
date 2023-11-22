@@ -22,24 +22,34 @@ The Container Tracking System is an innovative solution designed to revolutioniz
 ## Screenshots From The Websites
 **Main Landing Page**
 ![image](https://github.com/abduh3131/Data_FinalProject/assets/94156984/8f07c3f6-0525-454e-9673-d8fb0d7a3db3)
+
 Users may be able to click onto the "Find Us" page up top, an email logo for contact, and a log in for employees
+
 ![image](https://github.com/abduh3131/Data_FinalProject/assets/94156984/ba21718e-66ba-448f-a3e3-bc613c605190)
+
 -Users may email support 
 
 **Interactive Map with Live Container Location**
 ![image](https://github.com/abduh3131/Data_FinalProject/assets/94156984/f49ffba0-0923-415f-b432-4a5da718ddd8)
+
 -After inserting a valid tracking ID, a container ID will be provided, which when searched, will display the live location of the container on an interactive map
+
 
 **Employee Login**
 ![image](https://github.com/abduh3131/Data_FinalProject/assets/94156984/dd5862c6-75f9-4d55-a73b-dd99219e71d6)
+
 -Employees have the option to log in using their work email and SSN, either with or without '-'.
 
 **Information Display**
 -Employees can select from any view in the database to view different information which can help in finding orders, udnerstanding or knowing information regarding containers, see upcoming maintenance, etc.
+
 ![image](https://github.com/abduh3131/Data_FinalProject/assets/94156984/48b4f50d-0edc-41e2-8f29-c221fe77c35f)
+
 -The information will display the information where each result is separate and organized.
+
 ![image](https://github.com/abduh3131/Data_FinalProject/assets/94156984/bda8b6bc-c96f-40ec-a8e3-02c954414f86)
 
 **Find Us**
 ![image](https://github.com/abduh3131/Data_FinalProject/assets/94156984/4b0c3d04-45f7-4c94-92f7-14e6fadd7ad4)
+
 - A find us page can be found in the main page where when clicked will show information to contact the head office, as well as their location and an interaction map for reference
