@@ -57,8 +57,11 @@ Users may be able to click on the "Find Us" page up top, an email logo for conta
 
 ## Installation & Run
 
--Download the files in the repository
--Ensure your Apache and MySql is running
--Open localhost and the folder in which the files are stored in
+-Download the files in the repository.
+
+-Ensure your Apache and MySql is running.
+
+-Open localhost and the folder in which the files are stored in.
+
 
 
