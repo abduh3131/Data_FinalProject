@@ -53,8 +53,9 @@ Users may be able to click on the "Find Us" page up top, an email logo for conta
 ![image](https://github.com/abduh3131/Data_FinalProject/assets/94156984/4b0c3d04-45f7-4c94-92f7-14e6fadd7ad4)
 
 - A find us page can be found on the main page where when clicked will show information to contact the head office, as well as their location and an interaction map for reference
-- 
-##Installation & Run
+
+
+## Installation & Run
 
 -Download the files in the repository
 -Ensure your Apache and MySql is running
