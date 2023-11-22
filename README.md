@@ -11,14 +11,8 @@ The Container Tracking System is an innovative solution designed to revolutioniz
 - **Scalability:** Adaptable to businesses of various sizes, catering to a wide range of logistical needs.
 
 ## Technology Stack
-- **Frontend:** [Technologies used, e.g., HTML, CSS, JavaScript]
+- **Frontend:** [HTML, CSS, JavaScript]
 - **Mapping Technology:** OpenLayers
 - **Backend:** PHP
 - **Database:** MySQL
 
-## Installation
-Provide detailed steps on how to install and run the application. Example:
-```bash
-git clone https://github.com/yourusername/container-tracking-system.git
-cd container-tracking-system
-# Instructions to set up and run the project
