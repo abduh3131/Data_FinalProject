@@ -1,0 +1,37 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+#search-section {
+    margin: 2rem;
+    text-align: center;
+}
+
+    #search-section input {
+        padding: 0.5rem;
+        width: 20%;
+        margin-right: 0.5rem;
+    }
+
+    #search-section button {
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+    }
+
+#container-details {
+    margin: 2rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}

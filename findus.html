@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Us!</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400&family=Raleway:wght@300;700&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://openlayers.org/en/v6.9.0/css/ol.css" type="text/css">
+    <script src="https://openlayers.org/en/v6.9.0/build/ol.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        .map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* updated this line */
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            font-family: 'Raleway', sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow-x: hidden;
+        }
+
+
+        ul {
+            list-style-type: none;
+        }
+
+
+        header {
+            width: 100%;
+            background-color: #3e3a60;
+            padding: 10px 0;
+            color: white;
+            text-align: center;
+        }
+
+            header h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            nav ul li {
+                display: inline;
+                margin: 0 10px;
+            }
+
+                nav ul li a {
+                    text-decoration: none;
+                    color: #fff;
+                }
+
+        section {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        hr {
+            width: 30%;
+        }
+
+
+        p {
+            font-size: 14pt;
+        }
+
+        #map {
+            width: 600px;
+            height: 450px;
+            border: 3px solid black;
+            margin-right: 3%;
+        }
+
+        .phone-link {
+            transition: color 0.3s ease-in-out;
+            color: black;
+            text-decoration: none;
+            position: relative;
+        }
+
+            .phone-link:hover {
+                color: red;
+            }
+
+                .phone-link:hover::after {
+                    content: "Call";
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background-color: #ddd;
+                    color: black;
+                    padding: 2px;
+                    border-radius: 3px;
+                    opacity: 0;
+                    transition: opacity 0.3s ease-in-out;
+                }
+
+                .phone-link:hover::after {
+                    opacity: 1;
+                }
+
+        .link-style {
+            transition: color 0.5s ease-in-out;
+            color: black;
+            text-decoration: none;
+            position: relative;
+        }
+
+            .link-style:hover {
+                color: red;
+            }
+
+                .link-style:hover::after {
+                    content: attr(data-hover-text);
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background-color: #ddd;
+                    color: black;
+                    padding: 2px;
+                    border-radius: 3px;
+                    opacity: 0;
+                    transition: opacity 0.3s ease-in-out;
+                }
+
+                .link-style:hover::after {
+                    opacity: 1;
+                }
+
+        footer {
+            width: 100%;
+            background-color: #3e3a60;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" onclick="scrollToAbout()">Main Page</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <h1 style="font-size:32pt" id="cf">Find Us</h1>
+    <hr style="bottom-margin:10%" />
+
+    <section id="about" style="padding-top:5%;">
+
+
+        <div>
+
+            <div style="display: flex; flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <h2>Phone</h2>
+                    <p><a href="tel:905-123-4567" class="phone-link">905-123-4567</a></p>
+                    <h2>Fax</h2>
+                    <p>905-123-4567</p>
+                    <h2>Address</h2>
+                    <p>
+                        <a href="https://www.google.com/maps/place/CN+Tower/@43.6425701,-79.3896371,17z/data=!3m2!4b1!5s0x882b34d819a55ff7:0xad7cf7bcaf4e239b!4m6!3m5!1s0x882b34d68bf33a9b:0x15edd8c4de1c7581!8m2!3d43.6425662!4d-79.3870568!16zL20vMDF0d3M?entry=ttu"
+                           class="link-style"
+                           data-hover-text="Go to Google Maps">CN Tower, ON</a>
+                    </p>
+
+                    <h2>Additional Information</h2>
+                    <p style="padding-left:3%;">
+                        Welcome to our "Find Us" page. We're delighted to help you locate our offices and contact information.
+                        Whether you're a client, partner, or just curious about our services.
+                    </p>
+                </div>
+
+                <div id="map" class="map"></div>
+                <script type="text/javascript">
+                    var map = new ol.Map({
+                        target: 'map',
+                        layers: [
+                            new ol.layer.Tile({
+                                source: new ol.source.OSM()
+                            })
+                        ],
+                        view: new ol.View({
+                            center: ol.proj.fromLonLat([-79.3871533633128, 43.642736979232595]),
+                            zoom: 17
+                        })
+                    });
+
+                    var marker = new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-79.3871533633128, 43.642736979232595]))
+                    });
+
+                    var markerStyle = new ol.style.Style({
+                        image: new ol.style.Circle({
+                            radius: 7,
+                            fill: new ol.style.Fill({
+                                color: '#ff0000'
+                            }),
+                            stroke: new ol.style.Stroke({
+                                color: '#fff',
+                                width: 2
+                            })
+                        })
+                    });
+
+                    marker.setStyle(markerStyle);
+
+                    var vectorSource = new ol.source.Vector({
+                        features: [marker]
+                    });
+
+                    var markerVectorLayer = new ol.layer.Vector({
+                        source: vectorSource,
+                    });
+
+                    map.addLayer(markerVectorLayer);
+
+                    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                        anchor.addEventListener('click', function (e) {
+                            e.preventDefault();
+
+                            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        });
+                    });
+
+                </script>
+
+            </div>
+
+
+        </div>
+        </div>
+        <hr style="margin:10%" />
+
+        <footer>
+            <div class="footer-container">
+                <p>&copy; Container Tracking. All rights reserved.<br /></p>
+            </div>
+        </footer>
+</body>
+
+</html>

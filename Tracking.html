@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Data</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            font-family: 'Cairo', sans-serif;
+            font-family: 'Raleway', sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: large;
+            
+        }
+
+        #loadData {
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+            #loadData:hover {
+                background-color: #0056b3;
+                transform: scale(1.05);
+            }
+
+        select {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+
+        #dataDisplay {
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes moveRight {
+            0% {
+                left: -100px;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        hr.style-one {
+            border: 0;
+            height: 1px;
+            background: #333;
+            background-image: linear-gradient(to right, #ccc, #333, #ccc);
+        }
+
+       .select {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #logoutButton {
+            position:absolute;
+            top:10px;
+            right:10px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+
+
+    <select id="viewSelector">
+        <option value="cities_above_average_cost">Cities Above Average Cost</option>
+        <option value="customers_shipping_inventory">Customers Shipping Inventory</option>
+        <option value="customer_orders_shipping_complex">Customer Shipping Complex</option>
+        <option value="view_shipments_departed">Shipments in Transit</option>
+        <option value="view_shipments_at_bay">Shipments at Port</option>
+        <option value="supplier_container_count">Supplier Container Count</option>
+        <option value="upcoming_maintenance">Upcoming Maintenance</option>
+        <option value="view_high_cost_shipments">High Value Shipments</option>
+        <option value="view_shippingdetails">Shipment Details</option>
+        <option value="view_unique_cities">Unique Cities</option>
+    </select>
+    <button id="loadData">Load Data</button>
+    <div id="dataDisplay"></div>
+
+    <script>
+        $(document).ready(function () {
+            $("#loadData").click(function () {
+                var selectedView = $("#viewSelector").val();
+                $.ajax({
+                    url: "getData.php",
+                    type: "GET",
+                    data: { view: selectedView },
+                    success: function (data) {
+                        $("#dataDisplay").html(data.replace(/\n/g, "<br>"));
+                    },
+                    error: function (xhr, status, error) {
+                        $("#dataDisplay").text("Error: " + xhr.status + ", " + error);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <button id="logoutButton" onclick="logout()">Logout</button>
+
+    <script>
+        function logout() {
+            window.location.href = 'employee.html';
+        }
+    </script>
+
+</body>
+</html>
